@@ -31,7 +31,7 @@
       function toggleSignIn() {
         if (firebase.auth().currentUser) {
           // [START signout]
-          firebase.auth().signOut();
+          console.log(firebase.auth().signOut());
           // [END signout]
         } else {
           var email = document.getElementById('email').value;
