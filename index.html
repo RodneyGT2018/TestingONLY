@@ -25,6 +25,10 @@
                   };
                   
                   firebase.initializeApp(config);
+          
+
+      // GOOGLE SIGN-IN BUTTON AND FUNCITON//
+
           googleSignIn=()=> {
           provider = new firebase.auth.GoogleAuthProvider()
           firebase.auth().signInWithRedirect(provider).then(function(result){
@@ -38,9 +42,9 @@
         }
       
       
-        /**
-         * Handles the sign in button press.
-         */
+    /**
+     * Handles the EMAIL SIGN-IN button *.
+     */
           function toggleSignIn() {
             if (firebase.auth().currentUser) {
               // [START signout]
@@ -57,7 +61,7 @@
                 alert('Please enter a password.');
                 return;
               }
-              // Sign in with email and pass.
+              // Sign in with email and password.
               // [START authwithemail]
               firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
                 // Handle Errors here.
@@ -223,6 +227,7 @@
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
           <p>Enter an email and password below and either sign in to an existing account or sign up</p>
 
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="user-full-name" name="full-name" placeholder="full-name"/>
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
           &nbsp;&nbsp;&nbsp;
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
@@ -236,10 +241,10 @@
           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
 
           <!-- Container where we'll display the user details -->
-          <div class="quickstart-user-details-container">
+            <div class="quickstart-user-details-container">
             Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
             <div>Firebase auth <code>currentUser</code> object value:</div>
-            <pre><code id="quickstart-account-details">null</code></pre>
+            <pre><code id="quickstart-account-details"></code></pre>
           </div>
         </div>
       </div>
