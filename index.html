@@ -172,9 +172,7 @@
                 // [START_EXCLUDE]
                 document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
                 document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-                document.getElementById('quickstart-account-details') = JSON.stringify(user, null, '  ');
-                    console.log("#quickstart-account-details");
-                    
+                document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
                 if (!emailVerified) {
                   document.getElementById('quickstart-verify-email').disabled = false;
                 }
@@ -228,7 +226,8 @@
         </div>
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
           <p>Enter an email and password below and either sign in to an existing account or sign up</p>
-
+          
+        <!-- Input boxes and button on DOM -->
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
           &nbsp;&nbsp;&nbsp;
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
