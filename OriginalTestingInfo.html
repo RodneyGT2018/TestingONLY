@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+
+    
+
+</head>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+
+
+   
+  <body>
+
+    <button onclick="googleSignIn()">Google SignIn</button>
+    <br>
+    <button onclick="emailNewUser()">Email SignIn</button>
+    <input id="full-name">
+    <br>
+    <input id="email-address">
+
+    
+    <!-- <div id="firebaseui-auth-container">SignIn By Email</div>
+    <div id="loader">Loading...</div> -->
+
+
+    <script>
+            // Initialize Firebase
+            var config = {
+                    apiKey: "AIzaSyD9XEx6O9kjw0SuRRXcVjjC9k30l4PuxJc",
+                    authDomain: "author-page.firebaseapp.com",
+                    databaseURL: "https://author-page.firebaseio.com",
+                    projectId: "author-page",
+                    storageBucket: "author-page.appspot.com",
+                    messagingSenderId: "797162172587"
+                };
+                
+                firebase.initializeApp(config);
+
+                googleSignIn=()=> {
+                  provider = new firebase.auth.GoogleAuthProvider()
+                  firebase.auth().signInWithRedirect(provider).then(function(result){
+                      console.log(result);
+                      console.log("Success - Google Account Linked");
+
+                  }).catch(function(error){
+                      console.log(error);
+                      console.log("Failed to Link Google Account");
+                      })
+                }
+
+                emailNewUser=()=> {
+                  var newUser = $("full-name").push.val().trim();
+                  var newUserEmail = $("email-address").push.val().trim();
+                  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                  })
+                }
+
+
+
+                // ************   Email SignIn   *************
+                //     var ui = new firebaseui.auth.AuthUI(firebase.auth())
+                //     var uiConfig = {
+                //       callbacks: {
+                //         signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                //           // User successfully signed in.
+                //           return true;
+                //         },
+                        
+                //         uiShown: function() {
+                //           // The widget is rendered.
+                //           // Hide the loader.
+                //           document.getElementById('loader').style.display = 'none';
+                //         }
+                //       },
+                //       // Will use redirect for sign-in flow to allow for mobile users (i.e. - popup not good on mobile).
+                //       signInFlow: 'redirect',
+                //       signInSuccessUrl: 'https://rodneygt2018.github.io/Project01_Team-MAR/',
+                //       signInOptions: [
+                //         firebase.auth.EmailAuthProvider.PROVIDER_ID
+                //         ]
+                //   };
+                // // This start method will wait until the DOM is loaded before running.
+                //   ui.start('#firebaseui-auth-container', uiConfig);
+
+    </script> 
+  </body>
+</html>
